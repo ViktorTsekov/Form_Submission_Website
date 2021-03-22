@@ -1,0 +1,104 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Form
+
+<div style="border-radius: 30px;" class="form-main">
+    <div class="title">
+        <image src="/img/certificate.png">
+    </div>
+
+    <form asp-action="Complaint" asp-controller="Home" method="POST" >
+        <div style="text-align: center;">
+            <select style=" width: 50%;" id="fac" name="faculty" >
+               <option>@Model.Faculty</option>
+            </select>
+        </div>
+        <div class="">
+            <input readonly type="text" name="firstName" placeholder="Първо име" value="@Model.FirstName">
+            <input readonly type="text" name="middleName" placeholder="Бащино име" value="@Model.MiddleName">
+            <input readonly type="text" name="lastName" placeholder="Фамилия" value="@Model.LastName">
+        </div>
+
+        <div class="">
+            <select class="" name="EGN-choise">
+
+            </select>
+            <input readonly type="text" name="EGN" value="@Model.Egn">
+        </div>
+
+        <div class="">
+            <input readonly type="text" name="city" placeholder="Местожителство" >
+        </div>
+
+
+        <div class="signed">
+            <a>е записан/а през период</a>
+            <input readonly type="text" name="startYear" value="@Model.StartYear">
+            <a>/</a>
+            <input readonly type="text" name="lastYear" value="@Model.LastName">
+            <a>в</a>
+            <select class="" name="term">
+                <option>@Model.Term</option>
+            </select>
+            семестър
+        </div>
+
+        <div class="">
+            <a>на</a>
+            <select type="text" name="course">
+                <option>@Model.Course</option>
+            </select>
+            <a>курс,</a>
+            <select type="text" name="studyForm">
+                <option>@Model.StudyForm</option>
+            </select>
+            <a>обучение за висше образование</a>
+        </div>
+
+        <div class="">
+            <a>на образователна-квалификационна степен</a>
+            <select type="text" name="degree">
+                <option>@Model.Degree</option>
+            </select>
+        </div>
+
+        <div class="">
+            <a>по специалност</a>
+            <input readonly type="text" name="subject" value="@Model.Subject">
+            <a>с факултет, номер</a>
+            <input readonly type="text" name="subjectNumber" value="@Model.FacultyNumber">
+        </div>
+
+        <div class="text-area">
+            <div class="">
+                <a>Настоящето се издава в уверение на това, че</a>
+            </div>
+            <div class="">
+                <textarea  style="width: 60%;" name="textField" rows="5" cols="60">@Model.TextField</textarea>
+            </div>
+        </div>
+
+        <div class="">
+            <a>Настоящето се издава да послужи пред</a>
+            <select type="text" name="reason">
+                <option>@Model.Reason</option>
+            </select>
+        </div>
+
+        <div class="student">
+            <a>В момента съм</a>
+            <select type="text" name="studentType">
+                <option>@Model.StudentType</option>
+            </select>
+            <a>облекчаващо обстоятелство</a>
+            <select type="text" name="discount">
+                <option></option>
+            </select>
+        </div>
+    </form>
+
+</div>
+

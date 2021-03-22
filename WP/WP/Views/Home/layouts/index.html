@@ -1,0 +1,91 @@
+﻿
+<div class="text-center">
+
+    {{#if islogged}}
+    <h1 class="display-4">Welcome: {{userName}}</h1>
+
+
+
+<table id="customers">
+  <tr>
+    <th>Faculty</th>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Action</th>
+    <th>Status</th>
+  </tr>
+    {{#each list}}
+  <tr>
+    <td>{{this.faculty}}</td>
+    <td>Maria Anders</td>
+    <td>Уверение</td>
+    <td>            
+                    <button style="display: inline;margin-bottom:4%;border:none;border-radius:30%;background:rgb(226, 208, 105,0.8)" onclick="location.href='Home/Event/@item.Id'">View Form</button>
+             
+                {{#if this.isadmin}}
+                <form style="margin-left: 10%;display: inline-block;">
+                    <button type="submit" style="margin-bottom:4%;border:none;border-radius:30%;background:rgba(123, 226, 105, 0.8)"  formaction="/action/accept/{{this._id}}" formmethod="post">Accept</button>
+                    <button type="submit" style="margin-bottom:4%;border:none;border-radius:30%;background:rgba(226, 105, 105, 0.8)"  formaction="/action/decline/{{this._id}}" formmethod="post">Decline</button>
+                </form>
+                {{/if}}
+    </td>
+    <td>
+        <div class="status" style="border:none;border-radius:30%;" >Status:{{this.status}}</div>
+     
+
+<script>
+ var list =  document.getElementsByClassName('status');
+for(let i = 0; i < list.length; i++)
+{
+  let el = list[i].innerHTML.split(':')[1]
+  if(el == "Pending")list[i].style.background = 'lightgray'
+  if(el == "Accepted")list[i].style.background = 'rgba(123, 226, 105, 0.8)'
+  if(el == "Declined")list[i].style.background = 'rgba(226, 105, 105, 0.8)'
+
+}
+
+</script>
+
+    </td>
+  
+  </tr>
+ {{/each}}
+</table>
+
+        {{else}}
+         <div class="image-holder">
+            <img style="border-radius:12px" src="/img/unnamed.jpg" />
+        </div>
+    {{/if}}
+<br><br><br>
+</div>
+<div class="owl-carousel">
+    <div> <img src="~/img/36785949430_2af1bc3eb3_b.jpg"> </div>
+    <div> <img src="~/img/Sofia_University_-_FMI_2.jpg"> </div>
+    <div> <img src="~/img/Sofia_University_panorama_2-1200x675.jpg"> </div>
+</div>
+
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #52b419;
+  color: white;
+}
+</style>
